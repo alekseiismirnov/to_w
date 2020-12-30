@@ -13,4 +13,18 @@ describe 'Integer#to_w' do
   it 'converts 9 to nine' do
     expect(9.to_w).to eq('nine')
   end
+
+  it 'converts 15 to fifteen' do
+    expect(15.to_w).to eq('fifteen')
+  end
+
+  it 'converts 10 to ten' do
+    expect(10.to_w).to eq('ten')
+  end
+
+  it 'correctly interprets numbers from 21 to 99' do
+    expect(21.to_w).to eq('twenty one')
+    expect(99.to_w).to eq('ninty nine')
+    expect(48.to_w).to eq('forty eight')
+  end
 end
