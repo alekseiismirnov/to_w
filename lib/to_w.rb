@@ -21,6 +21,8 @@ MAGNITUDES10 = {
 class Integer
   def to_w
     case self
+    when 0
+      return ''
     when 1...10
       return ONES[self]
     when 10
@@ -28,7 +30,13 @@ class Integer
     when 11..19
       return TEENS[self]
     when 20..99
-      return "#{TENS[self.floor(-1)]} #{ONES[self%10]}"
+      text_number = "#{TENS[self.floor(-1)]}" 
+      text_number += " #{ONES[self%10]}" if self%10 != 0
+      return text_number
+    when 100..999
+      text_number = "#{ONES[self/100]} hundred"
+      text_number += " #{(self%100).to_w}" if self%100 != 0
+      return text_number
     end
   end
 end
