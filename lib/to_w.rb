@@ -33,9 +33,12 @@ class Integer
       text_number = "#{TENS[self.floor(-1)]}" 
       text_number += " #{ONES[self%10]}" if self%10 != 0
       return text_number
-    when 100..999
-      text_number = "#{ONES[self/100]} hundred"
-      text_number += " #{(self%100).to_w}" if self%100 != 0
+    else
+      # First power of ten greater or equal our number:
+      max_magnitude = MAGNITUDES10.keys.sort {|x,y| y <=> x}.find {|x| x < 1000}
+
+      text_number = "#{(self/max_magnitude).to_w} #{MAGNITUDES10[max_magnitude]}"
+      text_number += " #{(self%max_magnitude).to_w}" if self%max_magnitude != 0
       return text_number
     end
   end

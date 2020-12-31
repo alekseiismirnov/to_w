@@ -31,7 +31,7 @@ describe 'Integer#to_w' do
   it 'works with numbers from 100 to 999' do
     expect(100.to_w).to eq('one hundred')
     expect(999.to_w).to eq('nine hundred ninty nine')
-    expect(820.to_w).to eq('eigh hundred twenty')
+    expect(820.to_w).to eq('eight hundred twenty')
     expect(295.to_w).to eq('two hundred ninty five')
   end
 
