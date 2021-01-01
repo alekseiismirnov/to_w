@@ -14,8 +14,8 @@ TENS = {
 }
 
 MAGNITUDES10 = {
-  100=>'hundred', 1000=>'thousand', 10E6.to_i=>'million', 
-  10E9.to_i=>'billion', 10E12.to_i=>'trillion'
+  100=>'hundred', 1000=>'thousand', 1E6.to_i=>'million', 
+  1E9.to_i=>'billion', 1E12.to_i=>'trillion'
 }
 
 class Integer
@@ -35,7 +35,7 @@ class Integer
       return text_number
     else
       # First power of ten greater or equal our number:
-      max_magnitude = MAGNITUDES10.keys.sort {|x,y| y <=> x}.find {|x| x < 1000}
+      max_magnitude = MAGNITUDES10.keys.sort {|x,y| y <=> x}.find {|x| x <= self}
 
       text_number = "#{(self/max_magnitude).to_w} #{MAGNITUDES10[max_magnitude]}"
       text_number += " #{(self%max_magnitude).to_w}" if self%max_magnitude != 0
